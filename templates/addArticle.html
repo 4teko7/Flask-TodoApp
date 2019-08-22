@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+
+{% block title %}
+<h3>Add Article</h3>
+{% endblock title %}
+
+
+{% block body %}
+<Strong>Add Article</strong>
+<hr>
+{% from "includes/formhelpers.html" import render_field %}
+
+<form method=post>
+  <dl>
+    {{ render_field(form.title,class="form-control") }}
+    {{ render_field(form.content,class="form-control") }}
+  </dl>
+  <button type="submit" class="btn btn-danger">Add Article</button>
+</form>
+
+{% endblock body %}

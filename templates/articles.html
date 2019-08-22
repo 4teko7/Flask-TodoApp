@@ -1,0 +1,76 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Articles
+{% endblock title %}
+
+{% block body %}
+{% from "includes/formhelpers.html" import render_field %}
+
+<h3>Articles</h3>
+<hr>
+<form class="form-inline md-form mr-auto mb-4" action = "/search" method = "post">
+  <input class="form-control mr-sm-2" name = "keywords" type="text" placeholder="Search..." aria-label="Search">
+  <button class="btn aqua-gradient btn-rounded btn" type="submit">Search</button>
+</form>
+{% if articles %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Title</th>
+      <th scope="col">Author</th>
+      <th scope="col">Created Date</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+{% for article in articles %}
+    <tr>
+      <th scope="row">{{article[0]}}</th>
+      <td><a href = "/article/{{article[0]}}">{{article[1]}}</a></td>
+      <td>{{article[2]}}</td>
+      <td>{{article[4]}}</td>
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class = "alert alert-danger">There is no Articles in this Blog</div>
+{% endif %}
+
+{% if commentList %}
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Comment</th>
+      <th scope="col">Created Date</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for user in commentList %}
+    <tr>
+      <th scope="row">{{user[0]}}</th>
+      <td>{{user[1]}}</td>
+      <td>{{user[2]}}</td>
+      <!--<td><a class = "btn btn-danger" href = "/removeComment/{{user[1]}}">Remove</a></td>-->
+    </tr>
+{% endfor %}
+  </tbody>
+</table>
+{% else %}
+<div class = "alert alert-danger">There is no Comment in this Blog</div>
+{% endif %}
+
+<form method=post>
+  <dl>
+    {{ render_field(form.name,class="form-control") }}
+    {{ render_field(form.comment,class="form-control") }}
+  </dl>
+  <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+
+
+{% endblock body %}<h3>Articles</h3>

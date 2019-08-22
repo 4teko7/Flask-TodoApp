@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block title %}
+about
+{% endblock title %}
+
+{% block body %}
+<h3>ABOUT</h3>
+{% if session["username"] %}
+<small>Welcome, {{session["username"]}}</small>
+<hr>
+<a class = "btn btn-danger" href = "/editAbout">Edit</a>
+<div class = "container">
+<hr>
+Name : {{info[1]}} <br>
+Age : {{info[2]}}<br>
+School : {{info[3]}}<br>
+Department : {{info[4]}}<br>
+Summary : {{info[5]}}<br>
+<hr>
+</div>
+
+{% else %}
+<a class = "btn btn-danger" href = "/editAbout">Add</a>
+{% endif %}
+{% endblock body %}

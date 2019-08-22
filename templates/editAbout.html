@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Hakkimizda
+{% endblock title %}
+
+{% block body %}
+<h3>Do you want to write something which describe you best ?</h3>
+Welcome, {{session["username"]}}
+    {% from "includes/formhelpers.html" import render_field %}
+
+<form method=post>
+  <dl>
+    {{ render_field(form.name,class="form-control") }}
+    {{ render_field(form.school,class="form-control") }}
+    {{ render_field(form.age,class="form-control") }}
+    {{ render_field(form.department,class="form-control") }}
+    {{ render_field(form.summary,class="form-control") }}
+  </dl>
+  <button type="submit" class="btn btn-danger">Submit</button>
+</form>
+
+
+{% endblock body %}

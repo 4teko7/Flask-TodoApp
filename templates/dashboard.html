@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block title %}
+Dashboard
+{% endblock title %}
+
+
+{% block body %}
+<h3><strong>Dashbord</strong></h3>
+{% if session %}
+<small>Welcome {{session["username"]}}</small>
+{% else %}
+{% endif %}
+<hr>
+<div class = "container">
+<a class = "btn btn-danger" href ="/addarticle"><strong>Add Article</strong></a>
+</div>
+
+
+{% endblock body %}

@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Article
+{% endblock title %}
+
+{% block body %}
+<strong>{{article[1]}}</strong>
+<hr>
+Author : {{article[2]}}
+<hr>
+Created Time: {{article[4]}}
+<hr>
+<div class = "container">{{content|safe}}</div>
+{% endblock body %}
